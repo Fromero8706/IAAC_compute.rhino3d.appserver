@@ -3,6 +3,8 @@
 
 # Rhino Compute AppServer
 A node.js server acting as a bridge between client apps and private compute.rhino3d servers.
+[Link to Heroku App](https://iaacappserver.herokuapp.com/examples/) 
+
 
 This app is intended to host one or more custom grasshopper definitions and serve as the API that client applications can call to have definitions solved with modified input parameters.
 
