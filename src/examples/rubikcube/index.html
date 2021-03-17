@@ -3,11 +3,12 @@
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="data:,">
-        <title>Rubik Cube.gh</title>
+        <title>rubikcube.gh</title>
         <style>
             body {
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
+              
             }
             canvas { width: 100%; height: 100%; }
             input[type=range] { width: 100%; }
@@ -16,15 +17,15 @@
             #overlay { z-index: 1; width: 100%; }
             #overlay div { padding: 5px; }
             #loader {
-                border: 5px solid #f3f3f3; /* Light grey */
-                border-top: 5px solid #3d3d3d; /* Grey */
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
+                border: 5px solid #ff00d4; /* Light grey */
+                border-top: 5px solid #000000; /* Grey */
+                border-radius: 100%;
+                width: 20px;
+                height: 20px;
                 animation: spin 1s linear infinite;
                 position: absolute;
-                top: 50%;
-                left: 50%;
+                top: 95%;
+                left: 95%;
                 z-index: 2;
             }
             @keyframes spin {
@@ -38,19 +39,19 @@
         <div id="container">
             <div id="overlay">
                 <div>
-                  <label for="RH_IN: size">RH_IN: size</label>
-                  <input type="range" id="RH_IN: size" min="1" max="5" value="3" step="1">
+                  <label for="RH_IN: size" style="color:rgb(9, 255, 0)">Size</label>
+                  <input type="range" id="RH_IN:size" min="1" max="5" value="5" step="1">
                 </div>
                 <div>
-                  <label for="RH_IN:amount">RH_IN:amount</label>
-                  <input type="range" id="RH_IN:amount" min="1" max="10" value="9" step="1">
+                  <label for="RH_IN:amount" style="color:rgb(0, 247, 255)">Amount</label>
+                  <input type="range" id="RH_IN:amount" min="1" max="10" value="5" step="1">
                 </div>
                 <div>
-                  <label for="RH_IN:distance">RH_IN:distance</label>
-                  <input type="range" id="RH_IN:distance" min="1" max="10" value="8" step="1">
+                  <label for="RH_IN:distance" style="color:rgb(255, 0, 140)">Distance</label>
+                  <input type="range" id="RH_IN:distance" min="2" max="10" value="5" step="1">
                 </div>
-                <div><button id="downloadButton" disabled>Download</button></div>
-                <div><a href="Rubik Cube.gh" download="Rubik Cube.gh.html">Save source code</a></div>
+                <div><button id="downloadButton" disabled><p style="color:blanchedalmond"> Yourself</p></button></div>
+                <div><a href="rubikcube.gh" download="rubikcube.gh.html" style="color:rgb(255, 153, 0)">Save source code</a></div>
             </div>
         </div>
 
@@ -66,7 +67,7 @@ loader.setLibraryPath( 'https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/' )
 
 // initialise 'data' object that will be used by compute()
 const data = {
-  definition: 'Rubik Cube.gh',
+  definition: 'rubikcube.gh',
   inputs: getInputs()
 }
 
@@ -128,12 +129,12 @@ function init() {
 
     // create a scene and a camera
     scene = new THREE.Scene()
-    scene.background = new THREE.Color(1, 1, 1)
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
-    camera.position.set(1, -1, 1) // like perspective view
+    scene.background = new THREE.Color(0, 0, 1)
+    camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1000)
+    camera.position.set(100, 50, 100) // like perspective view
 
     // very light grey for background, like rhino
-    scene.background = new THREE.Color('whitesmoke')
+    scene.background = new THREE.Color('black')
 
     // create the renderer and add it to the html
     renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -247,7 +248,7 @@ function collectResults(responseJson) {
         downloadButton.disabled = false
 
         // zoom to extents
-        zoomCameraToSelection(camera, controls, scene.children)
+       // zoomCameraToSelection(camera, controls, scene.children)
     })
 }
 
