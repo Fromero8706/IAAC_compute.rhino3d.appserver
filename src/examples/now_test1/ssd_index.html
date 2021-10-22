@@ -1,33 +1,38 @@
+<!--
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <link rel="icon" href="data:,">
-        <title>Y_Column_X</title>
+        <title>NOW_AI</title>
         <style>
             body {
-                margin: 0;
+                margin: 10;
                 font-family: monospace;
+                font-size: 0.80rem;
+                color: rgb(0, 49, 95);
+                background-color: rgb(226, 226, 226);
+                text-align:left;
+                
             }
             canvas { width: 100%; height: 100%; }
             input[type=range] { width: 100%; }
             #container { position: relative; }
             #container canvas, #overlay { position: absolute; }
+          
 /*///////////////////////////////////////////////////////////////////////////*/
             #overlay {
               z-index: 1;
-              width: 250px;
+              width: 280px;
               height: 100vh;
-              background-color: rgba(0,0,0,0.1);
+              background-color: rgba(170, 196, 252, 0.24);
             }
-            #overlay div { padding: 5px 10px; }
+            #overlay div { padding: 5px 5px; }
 /*///////////////////////////////////////////////////////////////////////////*/
             #loader {
-                border: 5px solid #f3f3f3; /* Light grey */
-                border-top: 5px solid #3d3d3d; /* Grey */
+                border: 10px solid #f3f3f3; /* Light grey */
+                border-top: 10px solid #010320; /* Grey */
                 border-radius: 50%;
-                width: 40px;
-                height: 40px;
+                width: 60px;
+                height: 60px;git
                 animation: spin 1s linear infinite;
                 position: absolute;
                 top: 50%;
@@ -45,18 +50,119 @@
         <div id="container">
             <div id="overlay">
 <!-- /////////////////////////////////////////////////////////////////////////// -->
-                <div><h2>Y_ColumnX_</h2></div>
+<!--
+             <div><h2>NOW-AI WEB INTERFACE</h2></div> 
+                <!--<div><h4>//USME URBAN INTERFACE </h4></div>-->
+                 <!--   <div>
+                  <label for="height">Height</label>
+                  <input type="range" id="RH_IN:height" min="0" max="50" value="20" step="1">
+                </div>
+                -->
+                <!--
                 <div>
-                  <label for="RH_IN:amplitude">Amplitude</label>
-                  <input type="range" id="RH_IN:amplitude" min="1" max="10" value="5" step="1">
+                  <label for="RH_IN:usmeBdy">Show Usme Urban Boundary</label>
+                  <input type="checkbox" id="RH_IN:usmeBdy" >
+              </div>
+                <div><h4>//EXISTING RISK MAP </h4></div>
+                <div>
+                    <label for="RH_IN:E_risk1">Existing Risk Level 1</label>
+                    <input type="checkbox" id="RH_IN:E_risk1" >
                 </div>
                 <div>
-                    <label for="RH_IN:height">Height</label>
-                    <input type="range" id="RH_IN:height" min="1" max="10" value="5" step="1">
-                  </div>
-                <div><button id="downloadButton" disabled>Download</button></div>
-                <!-- <div><a href="_Bending_gridshell.gh" download="_Bending_gridshell.gh.html">Save source code</a></div> -->
+                    <label for="RH_IN:E_risk2">Existing Risk Level 2</label>
+                    <input type="checkbox" id="RH_IN:E_risk2" >
+                </div>    
+                <div>
+                    <label for="RH_IN:E_risk3">Existing Risk Level 3</label>
+                    <input type="checkbox" id="RH_IN:E_risk3" >
+                </div>
+                <div>
+                    <label for="RH_IN:E_risk4">Existing Risk Level 4</label>
+                    <input type="checkbox" id="RH_IN:E_risk4" >
+                </div>
+                <div>
+                    <label for="RH_IN:E_risk5">Existing Risk Level 5</label>
+                    <input type="checkbox" id="RH_IN:E_risk5" >
+                </div>   
+                <div><h4>//INTERVENTION </h4></div>
+                <div>
+                  <label for="RH_IN:resi_percentage">Percentage of Residential </label>
+                  <input type="range" id="RH_IN:resi_percentage" min="20" max="90" value="50" step="1">
+                  <p>Value: <span id="resi_percentage"></span> % </p>
+                </div>
+                <script>
+                  var slider = document.getElementById("RH_IN:resi_percentage");
+                  var output = document.getElementById("resi_percentage");
+                  output.innerHTML = slider.value;
+                  
+                  slider.oninput = function() {
+                    output.innerHTML = this.value;
+                  }
+                  </script>
+                <div>
+                  <label for="RH_IN:resi_size">Avrg Residential Unit Size</label>
+                  <input type="range" id="RH_IN:resi_size" min="30" max="120" value="50" step="1">
+                  <p>Value: <span id="resi_size"></span> (sq.m)</p>
+                </div>
+                <script>
+                  var slider2 = document.getElementById("RH_IN:resi_size");
+                  var output2 = document.getElementById("resi_size");
+                  output2.innerHTML = slider2.value;
+                  
+                  slider2.oninput = function() {
+                    output2.innerHTML = this.value;
+                  }
+                  </script>
+                <div>
+                  <label for="RH_IN:employment">No. Employment per Household </label>
+                  <input type="range" id="RH_IN:employment" min="1" max="8" value="3" step="1">
+                  <p>Value: <span id="employment"></span> (people)</p>
+                </div>
+                <script>
+                  var slider3 = document.getElementById("RH_IN:employment");
+                  var output3 = document.getElementById("employment");
+                  output3.innerHTML = slider3.value;
+                  
+                  slider3.oninput = function() {
+                    output3.innerHTML = this.value;
+                  }
+                  </script>
+                <div>
+                  <label for="RH_IN:commercial_size">Avrg Commercial Unit Size </label>
+                  <input type="range" id="RH_IN:commercial_size" min="30" max="120" value="50" step="1">
+                  <p>Value: <span id="demo_comm"></span> (sq.m)</p>
+                </div>
+                <script>
+                  var slider4 = document.getElementById("RH_IN:commercial_size");
+                  var output4 = document.getElementById("demo_comm");
+                  output4.innerHTML = slider4.value;
+                  
+                  slider4.oninput = function() {
+                    output4.innerHTML = this.value;
+                  }
+                  </script>
+                <div><h4>//PROPOSED RISK MAP </h4></div>
+                <div>
+                  <label for="RH_IN:P_risk1">Proposed Risk Level 1</label>
+                  <input type="checkbox" id="RH_IN:P_risk1" >
+              </div>
+              <div>
+                  <label for="RH_IN:E_risk2">Proposed Risk Level 2</label>
+                  <input type="checkbox" id="RH_IN:P_risk2" >
+              </div>    
+              <div>
+                  <label for="RH_IN:P_risk3">Proposed Risk Level 3</label>
+                  <input type="checkbox" id="RH_IN:E_risk3" >
+              </div>
+              <div>
+                  <label for="RH_IN:P_risk4">Proposed Risk Level 4</label>
+                  <input type="checkbox" id="RH_IN:P_risk4" >
+              </div>
+
+                <div><button id="downloadButton" enabled>Download</button></div>
+                <div><a href="NOW_AI_test1.gh" download="_NOW_AI_test1.gh.html">Save source code</a></div> 
 <!-- /////////////////////////////////////////////////////////////////////////// -->
+<!--
             </div>
         </div>
 
@@ -72,7 +178,7 @@ loader.setLibraryPath( 'https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/' )
 
 // initialise 'data' object that will be used by compute()
 const data = {
-  definition: 'test_Y.gh',
+  definition: 'NOW_AI_test1.gh',
   inputs: getInputs()
 }
 
@@ -398,3 +504,5 @@ function showSpinner(enable) {
         </script>
     </body>
 </html>
+
+
