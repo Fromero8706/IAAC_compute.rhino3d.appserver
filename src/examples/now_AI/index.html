@@ -17,10 +17,10 @@
             #overlay {
               z-index: 1;
               width: 250px;
-              height: 100vh;
+              height: 105vh;
               background-color: rgba(0,0,0,0.1);
             }
-            #overlay div { padding: 5px 10px; }
+            #overlay div { padding: 5px 5px; }
 /*///////////////////////////////////////////////////////////////////////////*/
             #loader {
                 border: 5px solid #f3f3f3; /* Light grey */
@@ -331,12 +331,12 @@ function collectResults(responseJson) {
     loader.parse( buffer, function ( object ) 
     {
         // debug 
-        /*
+        
         object.traverse(child => {
           if (child.material !== undefined)
             child.material = new THREE.MeshNormalMaterial()
         }, false)
-        */
+        J
 
         // clear objects from scene. do this here to avoid blink
         scene.traverse(child => {
@@ -371,7 +371,7 @@ function decodeItem(item) {
     return rhino.CommonObject.decode(data)
   }
   return null
-}
+}J
 
 /**
  * Called when a slider value changes in the UI. Collect all of the
